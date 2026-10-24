@@ -7,7 +7,6 @@
  <head>
   <meta charset="UTF-8">
   <title>Nova AI</title>
-  <script src="https://js.puter.com/v2/"></script>
 </head>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,system-ui,sans-serif;color:#202123;background:#fff;height:100vh;overflow:hidden}
@@ -57,19 +56,6 @@ async function send(){
 function sendBtn(disabled){document.getElementById("send").disabled=disabled}
 function store(){if(!messages.length)return;const title=messages[0].content.slice(0,35);saved.push({title,messages});saved=saved.slice(-30);localStorage.setItem("novaChats",JSON.stringify(saved));history()}
 input.addEventListener("input",()=>{input.style.height="auto";input.style.height=Math.min(input.scrollHeight,150)+"px"});render();history();
-</script>
- <script>
-async function askNovaAI(message) {
-  try {
-    const response = await puter.ai.chat(message);
-    return typeof response === "string"
-      ? response
-      : response?.message?.content ?? response?.text ?? "No response received.";
-  } catch (error) {
-    console.error("Puter AI error:", error);
-    return "AI request failed. Please try again.";
-  }
-}
 </script>
 </body>
 </body>
